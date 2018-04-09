@@ -31,6 +31,13 @@ class ViewController: UIViewController {
     @IBAction func timerStrat(_ sender: Any){
         if timerSwitch.isOn == true {
             myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime) , userInfo: nil, repeats: true)
+            
+            //add time closure사용
+            myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+                {(myTimer)in
+                self.updateTime()
+            })
+            
         }else{
             myTimer.invalidate()
         }
